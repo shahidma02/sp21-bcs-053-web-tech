@@ -5,7 +5,7 @@ import Navbar from '../Components/Navbar';
 function Dashboard(){
     return(
         <div>
-            <Navbar logedIn={true}/>
+            
         <div className='px-8 md:px-[200px] '>
             
             <Post/>

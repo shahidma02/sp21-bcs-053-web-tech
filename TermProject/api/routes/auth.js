@@ -1,9 +1,13 @@
 const express = require('express');
 const router = express.Router();
+// const cors = require("cors")
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+// const app = express();
 
+
+// app.use(cors());
 router.post('/signup', async (req, res) => {
     try {
         const { name, email, password, dob, city, country, gender } = req.body;
@@ -51,5 +55,16 @@ router.get('/logout', async (req, res) => {
     }
 }
 );
+
+router.get("/refetch", (req,res)=>{
+    const token=req.cookies.token
+    jwt.verify(token,process.env.SECRET,{},async (err,data)=>{
+        if(err){
+            return res.status(404).json(err)
+        }
+        res.status(200).json(data)
+    })
+})
+
 
 module.exports = router;

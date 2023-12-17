@@ -40,7 +40,7 @@ function DisplayUsers() {
 
   return (
     <div>
-      <Navbar/>
+      
       <h1>Users:</h1>
       <ul>
         {result.map((user) => (

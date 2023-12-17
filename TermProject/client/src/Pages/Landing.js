@@ -1,5 +1,5 @@
 // import "./App.css";
-// import Navbar from "./Components/Navbar";
+import Navbar from "../Components/Navbar"
 
 function Landing() {
   return (
@@ -13,10 +13,8 @@ function Landing() {
         </h1>
         <div className="flex">
           <p className="pr-10 border-r-2 hover:text-pink-500">Marketing</p>
+          <p className="px-10 border-r-2  hover:text-pink-500">Data</p>
           <p className="px-10 border-r-2  hover:text-pink-500">Design</p>
-          <p className="px-10 border-r-2  hover:text-pink-500">Design</p>
-          <p className="px-10 border-r-2  hover:text-pink-500">Design</p>
-          <p className="px-10 border-r-2 hover:text-pink-500">E-commerce</p>
           <p className="px-10 border-r-2 hover:text-pink-500">E-commerce</p>
           <p className="px-10   hover:text-pink-500">Fashion</p>
         </div>

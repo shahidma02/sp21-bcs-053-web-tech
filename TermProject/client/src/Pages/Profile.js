@@ -4,7 +4,7 @@ import Navbar from '../Components/Navbar';
 const Profile = () => {
   return (
     <div>
-      <Navbar/>
+      
         <div className='px-8  mt-8 flex h-96'>
             <div className='flex px-[150px] space-y-4  w-full '>
                 <div className=' w-1/4'>

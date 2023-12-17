@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const Post = require('../models/Post')
+const verifyToken = require('../verifyToken')
+// const app = express();
+// const cors = require("cors")
+
+
+// app.use(cors({origin:"http://localhost:5173",credentials:true}))
 
 router.post("/create",verifyToken, async(req,res)=>{
     try{

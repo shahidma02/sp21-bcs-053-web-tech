@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useState } from "react";
 import { CgProfile } from "react-icons/cg";
+import {FaBars} from 'react-icons/fa'
 import { Link } from "react-router-dom";
-
-const Navbar = ({logedIn}) => {
-  const user = logedIn;
+import SideNav from "./SideNav";
+import { UserContext } from "../context/UserContext";
+const Navbar = () => {
+  
+  const [side,setSide]=useState(false)
+  const {user} = useContext(UserContext) ;
+  const {setUser}=useContext(UserContext)
+  
+  const showSide=()=>{
+    console.log('Hello')
+    console.log(user)
+    setSide(!side)
+  }
   return (
     <div>
+      
       <nav class="bg-white  dark:bg-gray-900 border-b-2 h-24 sticky">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <div class="flex items-center">
@@ -94,23 +107,25 @@ const Navbar = ({logedIn}) => {
                 
               </li>
               <li class="relative group">
+                
                 {user? <a
                   href="#"
                   class="block mt-[2px] py-2 pl-1 pr-4 text-gray-500 rounded group-hover:bg-gray-200 relative"
                 >
                   <CgProfile className="text-2xl" />
                   <ul
-                    class="absolute group-hover:block hidden w-24 mt-2 space-y-1 bg-white text-gray-500 py-1 rounded shadow-lg left-0"
+                    class="absolute group-hover:block hidden w-32 mt-2 space-y-1 bg-white text-gray-500 py-1 rounded shadow-lg left-0"
                     x-data="{ isOpen: false }"
                     mouseenter="isOpen = true"
                     mouseleave="isOpen = false"
                   >
+                    <li class="block text-black px-4 py-2 text-sm font-bold">{user.name}</li>
                     <li>
                       <a
                         href="/signup"
                         class="block px-4 py-2 hover:bg-gray-200"
                       >
-                        Sign Up
+                        My Profile
                       </a>
                     </li>
                     <li>
@@ -118,7 +133,7 @@ const Navbar = ({logedIn}) => {
                         href="/LogIn"
                         class="block px-4 py-2 hover:bg-gray-200"
                       >
-                        Log In
+                        Log Out
                       </a>
                     </li>
                   </ul>
@@ -155,8 +170,14 @@ const Navbar = ({logedIn}) => {
               </li>
             </ul>
           </div>
+          <div onClick={showSide} className="md:hidden flex justify-end">
+          <p  className="cursor-pointer relative"><FaBars/></p>
+          {side && <SideNav/>}
+      </div>
         </div>
+        
       </nav>
+      
     </div>
   );
 };

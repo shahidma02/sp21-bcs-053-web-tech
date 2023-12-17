@@ -8,7 +8,7 @@ const PostDetails = () => {
   return (
 
     <div>
-      <Navbar/>
+      
       <div className="px-8 md:px-[200px] mt-8 pb-10">
         <div className="flex justify-between items-center">
           <h1 className="text-2xl font-bold text-black md:text-3xl">

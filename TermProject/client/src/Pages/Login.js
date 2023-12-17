@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { useNavigate } from "react-router-dom";
 import Navbar from '../Components/Navbar';
+import { UserContext } from '../context/UserContext';
 
 function Login (){
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('')
+  const {setUser} = useContext(UserContext)
   const navigate= useNavigate()
   
-
   const handleChange = (e) => {
     if (e.target.name === 'email') setEmail(e.target.value);
     else if (e.target.name === 'password') setPassword(e.target.value);
@@ -29,26 +29,25 @@ function Login (){
           "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
-      });
+      },{withCredentials:true});
 
       let result = await response.json();
       console.log("Success:", result);
+      setUser(result)
+      
       alert("Loged in successfully");
+      
       navigate("/dashboard");
     } catch (error) {
       console.error("Error:", error);
-    }
-    
-    
-
-  
-  setEmail('');
+    } 
+    setEmail('');
   setPassword('');
 };
 
   return (
     <div>
-      <Navbar logedIn={false}/>
+      
       {/* <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -87,22 +86,12 @@ function Login (){
                   <RiLockPasswordFill className="text-blue-950 text-2xl mt-6 mr-2" />
                   <div className="relative border-2 border-blue-950 rounded-lg w-[330px] h-9 mx-auto mt-5 px-2">
                     <input
-                    //   type={showPassword ? 'text' : 'password'}
                       type='password'
                       placeholder="Password"
                       className="border-0 rounded-md w-[315px] pr-2 focus:outline-none h-8  text-gray-900 shadow-sm    sm:text-sm sm:leading-6 "
                       onChange={handleChange} value={password} id="password" name="password" autocomplete="password" required
                     />
-                    {/* <button
-                      className="absolute right-2 top-1/2 transform -translate-y-1/2 focus:outline-none"
-                      onClick={handlePasswordVisibility}
-                    >
-                      {showPassword ? (
-                        <AiFillEye className="text-blue-950 text-2xl" />
-                      ) : (
-                        <AiFillEyeInvisible className="text-blue-950 text-2xl" />
-                      )}
-                    </button> */}
+                    
                   </div>
                 </div>
                 <h1 className="text-slate-400 ml-56 mt-2 hover:text-slate-600">Forget Password</h1>

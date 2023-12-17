@@ -10,6 +10,7 @@ const SignUp = () => {
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
   const [chngpassword, setChngPassword] = useState("");
+  const [error,setError]=useState(false)
   const navigate = useNavigate();
   const handleChange = (e) => {
     if (e.target.name === "name") setName(e.target.value);
@@ -24,6 +25,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     console.log('Hellooooo')
     if (password !== chngpassword) {
       alert("Password doesn't match");
@@ -50,7 +52,9 @@ const SignUp = () => {
       alert("User added successfully");
       navigate("/LogIn");
     } catch (error) {
-      console.error("Error:", error);
+      // console.error("Error:", error);
+      // setError(!error)
+      alert('something went wrong')
     }
     
     setName("");
@@ -64,7 +68,7 @@ const SignUp = () => {
 
   return (
     <div>
-      <Navbar logedIn={false}/>
+      
       <div className="h-screen pt-14 pb-16  justify-center flex  bg-fixed bg-center bg-cover bg-[url('back.png')] ">
         <div className=" bg-white w-[1000px] h-[480px] rounded-md">
           <h1 className={`text-3xl  text-blue-950 text-center mt-5 font-bold `}>
@@ -249,7 +253,7 @@ const SignUp = () => {
                 </div>
               </div>
             </div>
-
+            {/* {error && <p className=" text-red-600">Something went wrong. Try again.</p>} */}
             <div className="flex justify-center">
               <button
                 onClick={handleSubmit}

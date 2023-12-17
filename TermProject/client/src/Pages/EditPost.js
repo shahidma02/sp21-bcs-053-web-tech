@@ -20,7 +20,7 @@ const EditPost = () => {
 
   return (
     <div>
-      <Navbar/>
+      
       <div className="px-6 md:px-[200px] mt-8">
         <h1 className="font-bold md:text-2xl text-xl">Edit a Post</h1>
         <form className="w-full flex flex-col space-y-4 md:space-y-8 mt-4 ">

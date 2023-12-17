@@ -28,11 +28,12 @@ function Login (){
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(data),
-      },{withCredentials:true});
+      });
 
       let result = await response.json();
-      console.log("Success:", result);
+      // console.log("Success:", result);
       setUser(result)
       
       alert("Loged in successfully");
@@ -79,13 +80,14 @@ function Login (){
                   <MdEmail className="text-blue-950 text-2xl mt-11 mr-2" />
 
                   <div className="mt-10">
-                    <input onChange={handleChange} placeholder='Email' value={email} id="email" name="email" type="email" autocomplete="email" required className="border-2 border-blue-950 block w-[330px] h-9 rounded-md  py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300   sm:text-sm sm:leading-6" />
+                    <input autoComplete="off" onChange={handleChange} placeholder='Email' value={email} id="email" name="email" type="email" autocomplete="email" required className="border-2 border-blue-950 block w-[330px] h-9 rounded-md  py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300   sm:text-sm sm:leading-6" />
                   </div>
                 </div>
                 <div className="flex">
                   <RiLockPasswordFill className="text-blue-950 text-2xl mt-6 mr-2" />
                   <div className="relative border-2 border-blue-950 rounded-lg w-[330px] h-9 mx-auto mt-5 px-2">
                     <input
+                    autoComplete="off"
                       type='password'
                       placeholder="Password"
                       className="border-0 rounded-md w-[315px] pr-2 focus:outline-none h-8  text-gray-900 shadow-sm    sm:text-sm sm:leading-6 "

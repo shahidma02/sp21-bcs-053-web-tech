@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+
 // const app = express();
 
 
@@ -32,7 +33,7 @@ router.post('/login', async (req, res) => {
         if(!match){
             return res.status(401).json({error:'Invalid credentials'});
         }
-        const token=jwt.sign({id:user._id},process.env.SECRET,{expiresIn:'3d'});
+        const token=jwt.sign({_id:user._id,name:user.name,email:user.email},process.env.SECRET,{expiresIn:"3d"})
         const {password , ...info} = user._doc;
         res.cookie('token',token).status(200).json(info);
     
@@ -62,7 +63,7 @@ router.get("/refetch", (req,res)=>{
         if(err){
             return res.status(404).json(err)
         }
-        res.status(200).json(data)
+        res.status(200).json("data: ",data)
     })
 })
 

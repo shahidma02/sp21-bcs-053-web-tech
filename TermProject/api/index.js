@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const cors = require("cors")
 const dotenv = require('dotenv');
+const multer = require('multer')
 const cookieParser = require('cookie-parser')
 const authRoute=require('./routes/auth');
 const userRoute=require('./routes/user');

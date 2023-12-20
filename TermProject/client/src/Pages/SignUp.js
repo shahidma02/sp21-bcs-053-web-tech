@@ -78,7 +78,7 @@ const SignUp = () => {
             <div className="flex space-x-14 justify-center ">
               <div>
                 <label
-                  for="name"
+                  htmlFor="name"
                   className={` block text-md font-medium  text-blue-950 `}
                 >
                   Name
@@ -99,7 +99,7 @@ const SignUp = () => {
 
               <div>
                 <label
-                  for="email"
+                  htmlFor="email"
                   className={` block text-md font-medium  text-blue-950 `}
                 >
                   Email address
@@ -121,7 +121,7 @@ const SignUp = () => {
             <div className="flex space-x-14 justify-center ">
               <div>
                 <label
-                  for="gender"
+                  htmlFor="gender"
                   className={` block text-md font-medium  text-blue-950 `}
                 >
                   Gender
@@ -147,7 +147,7 @@ const SignUp = () => {
 
               <div>
                 <label
-                  for="dob"
+                  htmlFor="dob"
                   className={` block text-md font-medium  text-blue-950 `}
                 >
                   Date of Brith
@@ -170,7 +170,7 @@ const SignUp = () => {
             <div className="flex space-x-14 justify-center">
               <div>
                 <label
-                  for="password"
+                  htmlFor="password"
                   className={` block text-md font-medium  text-blue-950 `}
                 >
                   Password
@@ -191,7 +191,7 @@ const SignUp = () => {
 
               <div>
                 <label
-                  for="chngpassword"
+                  htmlFor="chngpassword"
                   className={` block text-md font-medium  text-blue-950 `}
                 >
                   Confirm Password
@@ -213,7 +213,7 @@ const SignUp = () => {
             <div className="flex space-x-14 justify-center">
               <div>
                 <label
-                  for="city"
+                  htmlFor="city"
                   className={` block text-md font-medium  text-blue-950 `}
                 >
                   City
@@ -234,7 +234,7 @@ const SignUp = () => {
 
               <div>
                 <label
-                  for="country"
+                  htmlFor="country"
                   className={` block text-md font-medium  text-blue-950 `}
                 >
                   Country

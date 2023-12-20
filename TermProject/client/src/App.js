@@ -14,6 +14,8 @@ import EditPost from "./Pages/EditPost";
 import Profile from "./Pages/Profile";
 import MyBlogs from "./Pages/MyBlogs";
 import { UserContextProvider } from "./context/UserContext";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
 function App() {
   return (
     <UserContextProvider>
@@ -24,11 +26,15 @@ function App() {
           <Route path={"/LogIn"} element={<LogIn />} />
           <Route path={"/dashboard"} element={<Dashboard />} />
           <Route path={"/displayusers"} element={<DisplayUsers />} />
-          <Route exact path="/posts/post/:id" element={<PostDetails />} />
+          <Route exact path="/posts/post/:id" element={<PostDetails/>}/>
           <Route path={"/write"} element={<CreatePost />} />
           <Route exact path="/edit/:id" element={<EditPost />} />
           <Route exact path="/myblogs/:id" element={<MyBlogs />} />
           <Route exact path="/profile/:id" element={<Profile />} />
+          <Route exact path="/about" element={<About />} />
+          <Route exact path="/contact" element={<Contact />} />
+          
+
         </Route>
       </Routes>
     </UserContextProvider>

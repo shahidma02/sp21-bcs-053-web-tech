@@ -80,7 +80,7 @@ function Login (){
                   <MdEmail className="text-blue-950 text-2xl mt-11 mr-2" />
 
                   <div className="mt-10">
-                    <input autoComplete="off" onChange={handleChange} placeholder='Email' value={email} id="email" name="email" type="email" autocomplete="email" required className="border-2 border-blue-950 block w-[330px] h-9 rounded-md  py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300   sm:text-sm sm:leading-6" />
+                    <input autoComplete="off" onChange={handleChange} placeholder='Email' value={email} id="email" name="email" type="email"  required className="border-2 border-blue-950 block w-[330px] h-9 rounded-md  py-1.5 px-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300   sm:text-sm sm:leading-6" />
                   </div>
                 </div>
                 <div className="flex">
@@ -91,7 +91,7 @@ function Login (){
                       type='password'
                       placeholder="Password"
                       className="border-0 rounded-md w-[315px] pr-2 focus:outline-none h-8  text-gray-900 shadow-sm    sm:text-sm sm:leading-6 "
-                      onChange={handleChange} value={password} id="password" name="password" autocomplete="password" required
+                      onChange={handleChange} value={password} id="password" name="password"  required
                     />
                     
                   </div>

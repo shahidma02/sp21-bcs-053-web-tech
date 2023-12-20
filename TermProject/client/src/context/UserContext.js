@@ -17,9 +17,19 @@ export function UserContextProvider({ children }) {
       const result = await response.json();
       console.log("refetchhh:",result)
       setUser(result)
+      // if (user!=null){
+      
+      //   if(user.name=='JsonWebTokenError')
+      // {
+      //   setUser(null)
+      // }
+  
+      // }
     } catch (err) {
       console.log('userrefetch',err);
     }
+    
+    
   };
   return (
     <UserContext.Provider value={{ user, setUser }}>

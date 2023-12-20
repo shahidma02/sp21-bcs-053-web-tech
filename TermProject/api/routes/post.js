@@ -9,7 +9,7 @@ const verifyToken = require('../verifyToken')
 
 // app.use(cors({origin:"http://localhost:5173",credentials:true}))
 
-router.post("/create",verifyToken, async(req,res)=>{
+router.post("/create", async(req,res)=>{
     try{
         const newPost=new Post(req.body)
         const savedPost = await newPost.save()
@@ -20,7 +20,7 @@ router.post("/create",verifyToken, async(req,res)=>{
     }
 } )
 
-router.put('/:id',verifyToken, async (req, res) => {
+router.put('/:id', async (req, res) => {
     try{
         
         const updatePost = await Post.findByIdAndUpdate(req.params.id,{
@@ -34,7 +34,7 @@ router.put('/:id',verifyToken, async (req, res) => {
     }
 }
 );
-router.delete('/:id',verifyToken, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try{
         await Post.findByIdAndDelete(req.params.id)
         res.status(200).json('Post has been deleted');
@@ -58,22 +58,39 @@ router.get('/:id',async (req, res) => {
 }
 );
 
-router.get('/', async (req, res) => {
-    const query = req.query
-    // console.log(query)
-    try{
-        const searchFilter={
-            title:{$regex:query.search,$options:"i"}
-        }
-        const w_posts = await Post.find(query.search?searchFilter:null)
-        res.status(200).json(w_posts);
+// router.get('/', async (req, res) => {
+//     const query = req.query
+//     // console.log(query)
+//     try{
+//         const searchFilter={
+//             title:{$regex:query.search,$options:"i"}
+//         }
+//         const w_posts = await Post.find(query.search?searchFilter:null)
+//         res.status(200).json(w_posts);
+//     }
+//     catch(error){
+//         console.error(error);
+//         res.status(500).json({ error: 'Internal Server Error' }); // Generic error response
+//     }
+// }
+// );
+router.get("/", async (req, res) => {
+    const { page = 1, perPage = 2, search } = req.query;
+
+    try {
+        const searchFilter = search
+            ? { title: { $regex: search, $options: "i" } }
+            : {};
+
+        const posts = await Post.find(searchFilter)
+            .skip((page - 1) * perPage)
+            .limit(parseInt(perPage));
+
+        res.status(200).json(posts);
+    } catch (err) {
+        res.status(500).json(err);
     }
-    catch(error){
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' }); // Generic error response
-    }
-}
-);
+});
 
 router.get('/user/:userId',
  async (req, res) => {

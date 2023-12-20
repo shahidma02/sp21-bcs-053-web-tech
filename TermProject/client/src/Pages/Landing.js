@@ -7,7 +7,7 @@ function Landing() {
     <div>
       
       <div className="py-40 pl-20">
-        <h1 class="mb-8 text-6xl font-bold bg-gradient-to-r  from-purple-500 to-pink-500 text-transparent bg-clip-text">
+        <h1 className="mb-8 text-6xl font-bold bg-gradient-to-r  from-purple-500 to-pink-500 text-transparent bg-clip-text">
           Scribbling Brilliance,
           <br />
           One Page at a Time!

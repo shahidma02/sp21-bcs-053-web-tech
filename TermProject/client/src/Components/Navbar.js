@@ -28,6 +28,9 @@ const Navbar = () => {
     }
   };
 
+  // console.log("name:",username)
+ 
+
   const showSide = () => {
     setSide(!side);
   };
@@ -69,7 +72,7 @@ const Navbar = () => {
               <li>
                 {user ? (
                   <Link
-                    to="#"
+                  to={"/myblogs/"+user._id}
                     className="block py-2 pl-1 pr-4 text-gray-500 relative hover:text-blue-500 hover:after:block hover:after:w-full hover:after:h-1 hover:after:bg-gradient-to-r hover:after:from-blue-500 hover:after:via-purple-500 hover:after:to-pink-500 "
                   >
                     My Blogs
@@ -93,7 +96,7 @@ const Navbar = () => {
                   </Link>
                 ) : (
                   <Link
-                    to="#"
+                    to="/about"
                     className="block py-2 pl-1 pr-4 text-gray-500 relative hover:text-blue-500 hover:after:block hover:after:w-full hover:after:h-1 hover:after:bg-gradient-to-r hover:after:from-blue-500 hover:after:via-purple-500 hover:after:to-pink-500 "
                   >
                     About Us
@@ -104,7 +107,7 @@ const Navbar = () => {
               <li>
                 {user ? null : (
                   <Link
-                    to="#"
+                    to="/contact"
                     className="block py-2 pl-1 pr-4 text-gray-500 relative hover:text-blue-500 hover:after:block hover:after:w-full hover:after:h-1 hover:after:bg-gradient-to-r hover:after:from-blue-500 hover:after:via-purple-500 hover:after:to-pink-500"
                   >
                     Contact Us
@@ -125,7 +128,7 @@ const Navbar = () => {
                     </li>
                     <li>
                       <Link
-                        to="/signup"
+                        to={`/profile/${user._id}`}
                         className="block px-4 py-2 hover:bg-gray-200"
                       >
                         My Profile

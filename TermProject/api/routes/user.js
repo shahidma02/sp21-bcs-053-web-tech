@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 const Post = require('../models/Post')
+const verifyToken = require('../verifyToken')
 // const app = express();
 // const cors = require("cors")
 

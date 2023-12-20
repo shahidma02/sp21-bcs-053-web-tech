@@ -39,7 +39,7 @@ const PostDetails = () => {
     try{
       const res=await axios.delete("http://localhost:4000/api/post/"+postId,{withCredentials:true})
       console.log(res.data)
-      navigate("/")
+      navigate("/dashboard")
 
     }
     catch(err){
@@ -61,8 +61,8 @@ const PostDetails = () => {
             {post.title}
           </h1>
           {user?._id===post?.userId && <div className="flex items-center justify-center space-x-2">
-            <p className="cursor-pointer" onClick={()=>navigate("/edit/"+postId)} ><BiEdit/></p>
-            <p className="cursor-pointer" onClick={handleDeletePost}><MdDelete/></p>
+            <p className="cursor-pointer text-pink-500 w-16 px-2 text-center rounded-md border-2 border-pink-500 hover:bg-pink-500 hover:text-white" onClick={()=>navigate("/edit/"+postId)} >Edit</p>
+            <p className="cursor-pointer text-pink-500 w-16 px-2 text-center  rounded-md border-2 border-pink-500 hover:bg-pink-500 hover:text-white" onClick={handleDeletePost}>Delete</p>
          </div>}
         </div>
         <div className="flex items-center justify-between mt-2 md:mt-4">
@@ -74,17 +74,14 @@ const PostDetails = () => {
         </div>
         <div className="flex items-center justify-center mt-5">
         <div className=" w-[600px] h-[400px] ">
-        <img src={post.photo} alt='post imagee' className='h-full w-full' /></div></div>
+        <img src={"http://localhost:4000/images/"+post.photo} alt='post imagee' className='h-full w-full' /></div></div>
         <p className="mx-auto mt-8">{post.desc}</p>
         <div className="flex items-center mt-8 space-x-4 font-semibold">
         <p>Categories:</p>
           <div className="flex justify-center items-center space-x-2">
-          {post.categories?.map((c,i)=>(
-            <>
-            <div key={i} className="bg-gray-300 rounded-lg px-3 py-1">{c}</div>
-            </>
-            
-          ))}
+          {post.categories?.map((c) => (
+  <div key={c.id} className="bg-gray-300 rounded-lg px-3 py-1">{c}</div>
+))}
             
           </div>
         </div>

@@ -114,6 +114,23 @@ const Navbar = () => {
                   </Link>
                 )}
               </li>
+              <li>
+                {user ? (
+                  <Link
+                    to="/calc"
+                    className="block py-2 pl-1 pr-4 text-gray-500 relative hover:text-blue-500 hover:after:block hover:after:w-full hover:after:h-1 hover:after:bg-gradient-to-r hover:after:from-blue-500 hover:after:via-purple-500 hover:after:to-pink-500 "
+                  >
+                    Calculate
+                  </Link>
+                ) : (
+                  <Link
+                    to="/calc"
+                    className="block py-2 pl-1 pr-4 text-gray-500 relative hover:text-blue-500 hover:after:block hover:after:w-full hover:after:h-1 hover:after:bg-gradient-to-r hover:after:from-blue-500 hover:after:via-purple-500 hover:after:to-pink-500 "
+                  >
+                    Calculate
+                  </Link>
+                )}
+              </li>
               <li x-data="{ isOpen: false }" className="relative group">
               <CgProfile className="text-2xl block mt-[5px]  text-gray-500 rounded group-hover:bg-gray-200 relative" />
                 {user ? (

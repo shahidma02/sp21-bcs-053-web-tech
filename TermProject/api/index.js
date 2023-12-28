@@ -9,6 +9,11 @@ const path = require('path')
 const authRoute=require('./routes/auth');
 const userRoute=require('./routes/user');
 const postRoute=require('./routes/post');
+const calculateRoute = require('./routes/calculate')
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 const connectDB=async()=>{
     try{
         await mongoose.connect('mongodb://127.0.0.1:27017/SmartScribble');
@@ -22,12 +27,15 @@ const connectDB=async()=>{
 
 dotenv.config();
 app.use("/images",express.static(path.join(__dirname,"/images")))
+
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(cookieParser())
 app.use(express.json());
 app.use("/api/auth",authRoute);
 app.use("/api/user",userRoute);
 app.use("/api/post",postRoute);
+
+app.use("/api/calculate",calculateRoute);
 
 //image upload
 const storage=multer.diskStorage({
@@ -45,6 +53,9 @@ app.post("/api/upload",upload.single("file"),(req,res)=>{
     // console.log(req.body)
     res.status(200).json("Image has been uploaded successfully!")
 })
+
+
+
 
 app.listen(4000,()=>{
     connectDB();

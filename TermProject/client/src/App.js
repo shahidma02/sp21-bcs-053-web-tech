@@ -16,6 +16,7 @@ import MyBlogs from "./Pages/MyBlogs";
 import { UserContextProvider } from "./context/UserContext";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
+import Calculate from "./Pages/Calculate";
 function App() {
   return (
     <UserContextProvider>
@@ -33,8 +34,7 @@ function App() {
           <Route exact path="/profile/:id" element={<Profile />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
-          
-
+          <Route exact path="/calc" element={<Calculate />} />
         </Route>
       </Routes>
     </UserContextProvider>
